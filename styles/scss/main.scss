@@ -1,0 +1,34 @@
+/*
+Point of entry for scss bundling
+*/
+// Moving bootstrap to styles.js speeds up considerably.
+// In our scss, we can then just import individual bootstrap components
+// when necessary. The downside to this is that we can end up with duplication of styling in our bundle.
+// If doing tons of bootstrap imports within your scss you should uncomment the below and remove bootstrap
+// from scripts/styles/vendor.js
+//@import "../../vendor/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "variables";
+
+
+html {
+  body {
+    #wrapper {
+      padding-top: $navbar-height + 20px;
+    }
+    a {
+      outline: none !important;
+      &:active {
+        outline: none !important;
+      }
+      &:hover {
+        outline: none !important;
+      }
+    }
+    input::-moz-focus-inner {
+      border: 0;
+    }
+  }
+}
+
+
+@import "tagger";
