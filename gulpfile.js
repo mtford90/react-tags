@@ -66,7 +66,7 @@ var HTML_FILES = ['./index.html'];
     gulp.task('help', taskListing.withFilters(null, excludeFilter));
 })();
 
-gulp.task('watch', ['watch-js', 'watch-server', 'watch-landing', 'livereload-listen']);
+gulp.task('watch', ['watch-js', 'watch-server', 'livereload-listen']);
 
 // If any dev server related configuration changes, we need to relaunch as opposed to hot reloading.
 if (!gulp.task('watch-server', function () {
@@ -138,16 +138,6 @@ gulp.task('compile', function () {
     gulp.src(HTML_FILES)
         .pipe(replace('http://localhost:' + conf.webPack.port + '/scripts/bundle.js', conf.compilation.name))
         .pipe(gulp.dest(publicDest));
-});
-
-gulp.task('sass-landing', function () {
-    gulp.src('./landing/scss/main.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('./landing/css'));
-});
-
-gulp.task('watch-landing', function () {
-    gulp.watch('landing/scss/*.scss', ['sass-landing']);
 });
 
 // If gulp is run without a task specification we just run the help tasks which displays a list
